@@ -86,8 +86,9 @@ source $ZSH/oh-my-zsh.sh
 
 export DEV=$HOME/Developer
 export PATH=$HOME/.yarn/bin:$PATH
-export PATH=$HOME/Developer/environment/scripts:$PATH
+export PATH=$DEV/environment/scripts:$PATH
 export PATH=~/Library/Python/3.4/bin:$PATH
+export PATH=~/$DEV/scripts:$PATH
 
 #ALIASES
 alias profile='vim ~/.zshrc'
@@ -129,9 +130,7 @@ export PATH=$PATH:/opt/gradle/gradle-3.5/bin
 
 export PATH=${PATH}:/Applications/Genymotion.app/Contents/MacOS
 
-export EDITOR=atom
-
-export ANDROID_EMULATOR='Google Nexus 5X - 7.0.0 - API 24 - 1080x1920'
+export EDITOR=vim
 
 #GO
 export GOPATH="$DEV/go/"
@@ -143,4 +142,5 @@ prompt pure
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
