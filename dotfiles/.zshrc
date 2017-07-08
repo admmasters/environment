@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/matthewrevell/.oh-my-zsh
+export ZSH=/Users/matthew.revell/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -51,7 +51,7 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git brew terminalapp osx history npm github react-native)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,16 +84,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export DEV=$HOME/Developer
-export PATH=$HOME/.yarn/bin:$PATH
-export PATH=$DEV/environment/scripts:$PATH
-export PATH=~/Library/Python/3.4/bin:$PATH
-export PATH=~/$DEV/scripts:$PATH
+export DEV="$HOME/Developer"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$DEV/environment:$PATH"
 
 #ALIASES
 alias profile='vim ~/.zshrc'
 alias reload='source ~/.zshrc'
-alias tprofile='vim ~/.tmux.conf'
 alias ngitignore='echo "node_modules/\nbower_components/" >> .gitignore' 
 alias dev='cd $DEV'
 alias nuclide='cd $DEV/nuclide'
@@ -118,7 +115,6 @@ alias gca='git commit -a -m'
 alias grv='git checkout -- '
 alias gnp='git push --set-upstream origin '
 alias prettylog='git log --graph --color --all --decorate --oneline'
-alias grhh='git reset HEAD --hard'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -128,19 +124,23 @@ export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=$PATH:/opt/gradle/gradle-3.5/bin
 
-export PATH=${PATH}:/Applications/Genymotion.app/Contents/MacOS
+#export PATH=${PATH}:/Applications/Genymotion.app/Contents/MacOS
 
-export EDITOR=vim
+#ZOPA
+export SESSION='Zopa'
+export ANDROID_EMULATOR='Google Nexus 5X - 7.0.0 - API 24 - 1080x1920'
+export ZOPA_LOCATION='~/Developer/zopa/ZeosMobile'
+alias zopa='$DEV/tmux/dev.sh $ZOPA_LOCATION $SESSION $ANDROID_EMULATOR'
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #GO
-export GOPATH="$DEV/go/"
+export PATH=$PATH:$(go env GOPATH)/bin
+#export GOPATH=$(go env GOPATH)
+export GOPATH=$DEV/go
 
-#PURE THEME
+#Theme
 autoload -U promptinit; promptinit
 prompt pure
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
+#TMUX
+alias tks="tmux kill-session -t $1"

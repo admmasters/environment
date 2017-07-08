@@ -8,13 +8,13 @@ homebrew_packages=(
   "tmux"
   "vim"
   "watchman"
-  "flow"
+  "reattach-to-user-namespace"
+  "oh-my-zsh"
 )
 
 homebrew_cask_apps=(
   "google-chrome"
   "docker"
-  "atom"
   "iterm"
 )
 
@@ -105,7 +105,7 @@ function symlinkingDotFiles() {
 }
 
 function linkBashProfile() {
-  source ~/.bash_profile | bash
+  source ~/.zshrc | zsh
 }
 
 function fixSierraSSHKeys() {
