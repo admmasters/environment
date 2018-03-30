@@ -123,5 +123,8 @@ let g:LanguageClient_diagnosticsEnable = 0
 " Typescript
 let g:nvim_typescript#default_mappings = 1
 let g:nvim_typescript#debug_enabled = 1
-
 nnoremap <C-j> :TSDef <CR>
+
+"Go
+let g:go_fmt_command = "goimports"
+
