@@ -28,6 +28,7 @@ Plug 'mhartington/nvim-typescript'
 
 call plug#end()
 
+set autowrite
 set number
 set expandtab
 set tabstop=2
