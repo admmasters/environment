@@ -1,35 +1,6 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH=~/.oh-my-zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/matthew.revell/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=""
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -38,65 +9,52 @@ ZSH_THEME=""
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+HIST_STAMPS="dd.mm.yyyy"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew terminalapp osx history npm github react-native)
+plugins=(git brew terminalapp osx history npm docker yarn)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 export DEV="$HOME/Developer"
+export ZOPA="$DEV/github/zopaUK"
+export REACT_EDITOR=code-insiders
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+
+#PATH
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$DEV/environment:$PATH"
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=$PATH:/opt/gradle/gradle-3.5/bin
+export PATH=${PATH}:/Applications/Genymotion.app/Contents/MacOS
+export GOPATH=$DEV/go
+export PATH=$PATH:$(go env GOPATH)/bin
+
+#Ignore Terminal Updating
+stty -ixon
+
+#Pure Theme
+autoload -U promptinit; promptinit
+prompt pure
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #ALIASES
 alias profile='vim ~/.zshrc'
-alias reload='source ~/.zshrc'
+alias rl='source ~/.zshrc; clear;'
 alias ngitignore='echo "node_modules/\nbower_components/" >> .gitignore' 
 alias dev='cd $DEV'
 alias nuclide='cd $DEV/nuclide'
 alias GET='curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET'
 alias opensource="cd $DEV/open-source"
 alias nuclide="cd $DEV/nuclide"
+alias zopa="cd $DEV/github/zopaUK"
+alias quopa="cd $DEV/github/zopaUK/quopa"
+alias hub="cd $DEV/github/zopaUK/ZEOSHub"
 
 #CHROME
 alias cdebug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
@@ -110,37 +68,47 @@ alias gco='git checkout'
 alias gb='git branch'
 alias gnb='git checkout -b'
 alias ga='git add'
-alias gA='git add -A'
+alias gaa='git add -A'
 alias gca='git commit -a -m'
 alias grv='git checkout -- '
 alias gnp='git push --set-upstream origin '
-alias prettylog='git log --graph --color --all --decorate --oneline'
+alias plog='git log --graph --color --all --decorate --oneline'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=$PATH:/opt/gradle/gradle-3.5/bin
-
-#export PATH=${PATH}:/Applications/Genymotion.app/Contents/MacOS
-
-#ZOPA
-export SESSION='Zopa'
-export ANDROID_EMULATOR='Google Nexus 5X - 7.0.0 - API 24 - 1080x1920'
-export ZOPA_LOCATION='~/Developer/zopa/ZeosMobile'
-alias zopa='$DEV/tmux/dev.sh $ZOPA_LOCATION $SESSION $ANDROID_EMULATOR'
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-#GO
-export PATH=$PATH:$(go env GOPATH)/bin
-#export GOPATH=$(go env GOPATH)
-export GOPATH=$DEV/go
-
-#Theme
-autoload -U promptinit; promptinit
-prompt pure
-
-#TMUX
+alias lbs='lerna bootstrap'
 alias tks="tmux kill-session -t $1"
+alias yt='yarn typecheck'
+alias ys='yarn start'
+alias yc='yarn compile'
+alias ysd='yarn start:dev'
+alias yr='rm -rf node_modules && yarn'
+alias yi='yarn'
+alias zp="cd ${ZOPA}"
+alias qp="cd ${ZOPA}/quopa"
+alias zn="cd ${ZOPA}/zeos-native"
+alias zl="cd ${ZOPA}/zeos-libs"
+alias ycd="yarn compile:dev"
+alias vim=nvim
+alias fdns='sudo killall -HUP mDNSResponder; sleep 2; echo macOS DNS Cache Reset | say'
+alias t1="tree -L 1"
+alias clo="cd $DEV/go/src/github.dns.ad.zopa.com/zopaUK/clogger"
+alias libs=$DEV/github/zopaUK/zeos-libs
+
+function _yat {
+  yarn add @types/$1
+}
+alias yat=_yat
+alias cloggerimac='rsync -azP ~/Developer/go/src/github.dns.ad.zopa.com/ matthewrevell@192.168.1.222:~/Developer/go/src/github.dns.ad.zopa.com'
+alias piazza="cd ${ZOPA}/piazza"
+
+function _gitToKey {
+  git remote set-url origin keybase://private/admmasters/$1
+}
+
+function _gitToZopa {
+  git remote set-url origin git@github.dns.ad.zopa.com:zopaUK/$1.git
+}
+
+alias qkey=_gitToKey
+alias qor=_gitToZopa quopa
+
+
