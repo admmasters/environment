@@ -3,19 +3,16 @@
 # Matt Revell Scripts v1.1
 
 homebrew_packages=(
-  "bash"
   "git"
   "tmux"
   "vim"
-  "watchman"
+  "neovim"
   "reattach-to-user-namespace"
-  "oh-my-zsh"
 )
 
 homebrew_cask_apps=(
   "google-chrome"
   "docker"
-  "iterm"
 )
 
 function installHomebrew() {
@@ -72,17 +69,8 @@ function installMacAppStoreApps() {
 }
 
 function manualInstalls() {
-  installGitAwarePrompt
   installNvm
   installYarn
-}
-
-function installGitAwarePrompt() {
-  echo "Setting up gitaware prompt"
-  rm -rf ~/.bash
-  mkdir ~/.bash
-  cd ~/.bash
-  git clone git://github.com/jimeh/git-aware-prompt.git
 }
 
 function installNvm() {
@@ -104,10 +92,6 @@ function symlinkingDotFiles() {
   done
 }
 
-function linkBashProfile() {
-  source ~/.zshrc | zsh
-}
-
 function fixSierraSSHKeys() {
   cat > ~/.ssh/config << EOL
 Host *
@@ -115,6 +99,7 @@ Host *
   UseKeychain yes
   IdentityFile ~/.ssh/id_rsa
 EOL
+
 }
 
 function activate() {
