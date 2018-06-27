@@ -1,6 +1,6 @@
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export DEV="$HOME/Developer"
-export ZOPA="$DEV/github/zopaUK"
+export ZOPA="$DEV/github.dns.ad.zopa.com/zopaUK"
 export REACT_EDITOR=code-insiders
 
 export NVM_DIR="$HOME/.nvm"
@@ -38,23 +38,16 @@ export PATH=$PATH:$(go env GOPATH)/bin
 #Ignore Terminal Updating
 stty -ixon
 
-#Pure Theme
-autoload -U promptinit; promptinit
-prompt pure
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 #ALIASES
 alias profile='vim ~/.zshrc'
 alias rl='source ~/.zshrc; clear;'
-alias ngitignore='echo "node_modules/\nbower_components/" >> .gitignore' 
 alias dev='cd $DEV'
-alias nuclide='cd $DEV/nuclide'
 alias GET='curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET'
 alias opensource="cd $DEV/open-source"
 alias nuclide="cd $DEV/nuclide"
-alias zopa="cd $DEV/github/zopaUK"
-alias quopa="cd $DEV/github/zopaUK/quopa"
-alias hub="cd $DEV/github/zopaUK/ZEOSHub"
+alias zopa="cd $DEV/github.dns.ad.zopa.com/zopaUK"
+alias quopa="cd $DEV/github.dns.ad.zopa.com/zopaUK/quopa"
+alias hub="cd $DEV/github.dns.ad.zopa.com/zopaUK/ZEOSHub"
 
 #CHROME
 alias cdebug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
@@ -110,5 +103,12 @@ function _gitToZopa {
 
 alias qkey=_gitToKey
 alias qor=_gitToZopa quopa
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias conv="vim ~/Developer/github.com/admmasters/environment/dotfiles/.vimrc"
+alias cont="vim ~/Developer/github.com/admmasters/environment/dotfiles/.tmux.conf"
+alias conz="vim ~/Developer/github.com/admmasters/environment/dotfiles/.zshrc"
+
 
 
